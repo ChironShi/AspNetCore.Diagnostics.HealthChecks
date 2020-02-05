@@ -5,7 +5,7 @@
     <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
     <PackageTags>HealthCheck;Health;RabbitMQ</PackageTags>
     <Description>HealthChecks.RabbitMQ is the health check package for RabbitMQ.</Description>
-    <Version>$(HealthCheckRabbitMQ)</Version>
+    <Version>3.0.4-cs</Version>
     <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
     <Company>$(Company)</Company>
     <Authors>$(Authors)</Authors>

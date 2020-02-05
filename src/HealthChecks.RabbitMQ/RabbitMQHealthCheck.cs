@@ -11,6 +11,7 @@ namespace HealthChecks.RabbitMQ
     {
         private readonly IConnectionFactory _connectionFactory;
         private IConnection _rmqConnection;
+        private Func<IConnection> _connFac;
 
         public RabbitMQHealthCheck(string rabbitMqConnectionString, SslOption sslOption = null)
         {
@@ -31,6 +32,11 @@ namespace HealthChecks.RabbitMQ
             _rmqConnection = connection ?? throw new ArgumentNullException(nameof(connection));
         }
 
+        public RabbitMQHealthCheck(Func<IConnection> connFac)
+        {
+            _connFac = connFac ?? throw new ArgumentNullException(nameof(connFac));
+        }
+
         public RabbitMQHealthCheck(IConnectionFactory connectionFactory)
         {
             _connectionFactory = connectionFactory ?? throw new ArgumentNullException(nameof(connectionFactory));
@@ -43,7 +49,7 @@ namespace HealthChecks.RabbitMQ
                 // If no factory was provided then we're stuck using the passed in connection
                 // regardless of the state it may be in. We don't have a way to attempt to
                 // create a new connection :(
-                if (_connectionFactory == null)
+                if (_connectionFactory == null && _connFac == null)
                 {
                     return TestConnection(_rmqConnection);
                 }
@@ -55,7 +61,7 @@ namespace HealthChecks.RabbitMQ
                 }
                 if (_rmqConnection == null)
                 {
-                    _rmqConnection = CreateConnection(_connectionFactory);
+                    _rmqConnection = _connFac != null ? _connFac() : CreateConnection(_connectionFactory);
                 }
 
                 return TestConnection(_rmqConnection);
