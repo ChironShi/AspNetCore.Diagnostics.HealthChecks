@@ -6,7 +6,7 @@
     <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
     <PackageTags>HealthCheck;UI;Client</PackageTags>
     <Description>HealthChecks.UI.Client contains some mandatory abstractions to work with HealthChecks.UI.</Description>
-    <Version>$(HealthCheckUIClient)</Version>
+    <Version>3.0.2-cs</Version>
     <RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
     <Company>$(Company)</Company>
     <Authors>$(Authors)</Authors>

@@ -39,12 +39,8 @@ namespace HealthChecks.UI.Client
 
                 if (item.Value.Exception != null)
                 {
-                    var message = item.Value.Exception?
-                        .Message
-                        .ToString();
-
-                    entry.Exception = message;
-                    entry.Description = item.Value.Description ?? message;
+                    entry.Exception = item.Value.Exception.ToString();
+                    entry.Description = item.Value.Description ?? item.Value.Exception.Message;
                 }
 
                 uiReport.Entries.Add(item.Key, entry);
