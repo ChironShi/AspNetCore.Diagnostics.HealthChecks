@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>$(NetCoreTargetVersion)</TargetFramework>
+    <TargetFrameworks>netcoreapp2.2;netcoreapp3.0</TargetFrameworks>
     <PackageLicenseUrl>$(PackageLicenseUrl)</PackageLicenseUrl>
     <PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
     <PackageTags>HealthCheck;UI;Client</PackageTags>
@@ -14,9 +14,15 @@
     <PackageId>AspNetCore.HealthChecks.UI.Client</PackageId>
   </PropertyGroup>
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="$(MicrosoftExtensionsDiagnosticsHealthChecks)" />
-    <!--<PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJson)" />-->
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.2'">
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="System.Text.Json" Version="4.7.0" />
+  </ItemGroup>
 </Project>

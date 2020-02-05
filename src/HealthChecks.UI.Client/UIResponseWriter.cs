@@ -17,6 +17,7 @@ namespace HealthChecks.UI.Client
 
         public static async Task WriteHealthCheckUIResponse(HttpContext httpContext, HealthReport report)
         {
+            var rsp = emptyResponse;
             if (report != null)
             {
                 httpContext.Response.ContentType = DEFAULT_CONTENT_TYPE;
@@ -27,12 +28,14 @@ namespace HealthChecks.UI.Client
                 using var responseStream = new MemoryStream();
 
                 await JsonSerializer.SerializeAsync(responseStream, uiReport, options.Value);
-                await httpContext.Response.BodyWriter.WriteAsync(responseStream.ToArray());
+                rsp = responseStream.ToArray();
             }
-            else
-            {
-                await httpContext.Response.BodyWriter.WriteAsync(emptyResponse);
-            }
+
+#if NETCOREAPP2_2
+            await httpContext.Response.Body.WriteAsync(rsp);
+#else
+                await httpContext.Response.BodyWriter.WriteAsync(rsp);
+#endif
         }
 
         private static JsonSerializerOptions CreateJsonOptions()
