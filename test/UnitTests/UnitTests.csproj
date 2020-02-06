@@ -31,6 +31,7 @@
     <ProjectReference Include="..\..\src\HealthChecks.DynamoDb\HealthChecks.DynamoDb.csproj" />    
     <ProjectReference Include="..\..\src\HealthChecks.IdSvr\HealthChecks.IdSvr.csproj" />    
     <ProjectReference Include="..\..\src\HealthChecks.MySql\HealthChecks.MySql.csproj" />    
+    <ProjectReference Include="..\..\src\HealthChecks.NeteaseIM\HealthChecks.NeteaseIM.csproj" />    
     <ProjectReference Include="..\..\src\HealthChecks.Network\HealthChecks.Network.csproj" />    
     <ProjectReference Include="..\..\src\HealthChecks.RabbitMQ\HealthChecks.RabbitMQ.csproj" />    
     <ProjectReference Include="..\..\src\HealthChecks.RavenDB\HealthChecks.RavenDB.csproj" />    
