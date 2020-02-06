@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>chenmoTC</Authors>
+    <Company>chenmoTC</Company>
+    <Description>针对网易云信服务端接口的健康检查</Description>
+    <RepositoryUrl>https://github.com/ChironShi/AspNetCore.Diagnostics.HealthChecks</RepositoryUrl>
+    <PackageProjectUrl>http://github.com/ChironShi/AspNetCore.Diagnostics.HealthChecks</PackageProjectUrl>
+    <PackageId>AspNetCore.HealthChecks.NeteaseIM</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
